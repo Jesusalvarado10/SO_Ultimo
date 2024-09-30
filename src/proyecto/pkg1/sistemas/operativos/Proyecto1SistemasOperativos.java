@@ -4,6 +4,12 @@
  */
 package proyecto.pkg1.sistemas.operativos;
 
+import Class.ProyectManager;
+import Class.ProductorPlaca;
+import Class.Empresa;
+import Class.Director;
+import Class.Almacen;
+
 /**
  *
  * @author gabga

@@ -2,7 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package proyecto.pkg1.sistemas.operativos;
+package Class;
+
+import Class.Almacen;
+
 /**
  *
  * @author gabga
@@ -16,8 +19,8 @@ public class Empleados extends Thread{
     protected int ProduDay;
     protected int unidades;
     
-    public Empleados(int paga,int id,String tipo,Almacen almacen,Empresa puntero,int Unidades){
-        this.PagaPorHora=paga;
+    public Empleados(int id,String tipo,Almacen almacen,Empresa puntero,int Unidades){
+        this.PagaPorHora=0;
         this.ID=id;
         this.tipo=tipo;
         this.Almacen=almacen;
