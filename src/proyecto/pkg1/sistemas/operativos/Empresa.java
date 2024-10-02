@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package proyecto.pkg1.sistemas.operativos;
+import java.util.List;
 
 /**
  *
@@ -15,12 +16,12 @@ public class Empresa {
     private int GananciasNetas;
     private ProyectManager PM;
     private Director Director;
-    private ProductorPlaca PPlacas[];
-    private ProductorFuente PFuente[];
+    private List<ProductorPlaca> PPlacas;
+    private List<ProductorFuente> PFuente;
     //private ProductorCPU PCPU[];
     
     
-    public Empresa(String nombre,ProyectManager pm,Director director,ProductorPlaca[] lista){
+    public Empresa(String nombre,ProyectManager pm,Director director,List<ProductorPlaca> lista){
         this.Nombre=nombre;
         this.Ganacias=0;
         this.Perdidas=0;
@@ -33,6 +34,10 @@ public class Empresa {
     
     public ProyectManager SolicitarPM(){
         return(this.PM);
+    }
+    
+    public List<ProductorPlaca> SolicitarPPlacas(){
+        return(this.PPlacas);
     }
     
     public Director SolicitarDirector(){

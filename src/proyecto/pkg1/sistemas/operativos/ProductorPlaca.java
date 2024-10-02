@@ -10,17 +10,23 @@ package proyecto.pkg1.sistemas.operativos;
  */
 public class ProductorPlaca extends Empleados{
   
-    public ProductorPlaca(int id,Almacen almacen,Empresa empresa,int Unidades) {
-        super(26, id,"Placa",almacen,empresa,Unidades);
+    public ProductorPlaca(int id,Almacen almacen,int Unidades) {
+        super(26, id,"Placa",almacen,Unidades);
     }
     
     public void run(){
-        chambear();
+        this.chambear();
+        this.refreshday();
+    }
+    
+    public void refreshday(){
+        this.ProduDay=this.PunteroAEmpresa.SolicitarPM().getDays();
     }
     
     public void chambear(){
         //int Days=this.PunteroAEmpresa.SolicitarPM().getDays();
-        if (this.ProduDay==2){
+        if (this.ProduDay==2){  
+            //System.out.println("Soy el empleado" + this.ID +" y me voy por el dia "+this.ProduDay);
         this.ProduDay=0;
         this.Almacen.almacenar(this.ID,this.tipo,this.unidades);
         }

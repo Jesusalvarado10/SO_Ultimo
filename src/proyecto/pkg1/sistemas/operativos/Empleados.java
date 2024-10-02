@@ -16,13 +16,21 @@ public class Empleados extends Thread{
     protected int ProduDay;
     protected int unidades;
     
-    public Empleados(int paga,int id,String tipo,Almacen almacen,Empresa puntero,int Unidades){
+    public Empleados(int paga,int id,String tipo,Almacen almacen,int Unidades){
         this.PagaPorHora=paga;
         this.ID=id;
         this.tipo=tipo;
         this.Almacen=almacen;
-        this.PunteroAEmpresa=puntero;
+        this.PunteroAEmpresa=null;
         this.unidades=Unidades;
     }
+    
+    public void Contratar(Empresa empresa){
+        System.out.println("Contratado "+this.ID);
+        this.PunteroAEmpresa=empresa;
+    }
+    
+    public int getID(){
+    return(this.ID);}
     
 }

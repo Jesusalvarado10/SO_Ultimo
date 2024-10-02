@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package proyecto.pkg1.sistemas.operativos;
-
+import java.util.List;
+import java.util.LinkedList;
+import java.util.ListIterator;
 /**
  *
  * @author gabga
@@ -17,13 +19,27 @@ public class Proyecto1SistemasOperativos {
     //Pasar esas listas para la empresa despues
     public static void main(String[] args) {
         ProyectManager PM= new ProyectManager();
-        Director director= new Director(PM);
-        for (int i =1; i<=5;i++){
-            ProductorPlaca empleado = new ProductorPlaca(i,almacen,);
-            
+        Director director=new Director(PM);
+        Almacen almacen= new Almacen();
+        List<ProductorPlaca> Lista = new LinkedList<>();
+        for (int i = 1; i<=5;i++){
+            ProductorPlaca ProductorP= new ProductorPlaca(i,almacen,2);
+            Lista.add(ProductorP);
         }
-        Empresa empresa = new Empresa("Pepe Corp",PM,director,);
-        Almacen almacen=new Almacen();
+        Empresa HP = new Empresa("HP",PM,director,Lista);
+        HP.SolicitarPM().contratar(HP);
+        ListIterator<ProductorPlaca> iterador = Lista.listIterator();
+            while(iterador.hasNext()){
+                System.out.println(iterador.next().getID());
+            }
+            while(iterador.hasNext()){
+                iterador.next().Contratar(HP);
+            }
+            while(iterador.hasNext()){
+                iterador.next().start();
+            }
+        PM.start();
+        
     }
     
 }

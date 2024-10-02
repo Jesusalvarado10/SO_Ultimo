@@ -4,6 +4,10 @@
  */
 package proyecto.pkg1.sistemas.operativos;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.ListIterator;
+
 /**
  *
  * @author gabga
@@ -30,8 +34,6 @@ public class ProyectManager extends Thread{
             this.Days++;
             //Comienzo del dia
             System.out.println("Dia " + this.Days);
-            
-            
             try{
             Thread.sleep(1000);
         } catch (InterruptedException e){
