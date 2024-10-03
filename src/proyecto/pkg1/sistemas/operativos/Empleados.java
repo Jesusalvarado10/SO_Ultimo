@@ -7,6 +7,8 @@ package proyecto.pkg1.sistemas.operativos;
  *
  * @author gabga
  */
+
+//Implementar el concepto de la clase Hilos que se hizo para experimentar
 public class Empleados extends Thread{
     protected int PagaPorHora;
     protected Almacen Almacen;

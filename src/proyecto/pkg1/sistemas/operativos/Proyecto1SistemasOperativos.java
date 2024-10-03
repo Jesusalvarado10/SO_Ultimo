@@ -21,24 +21,18 @@ public class Proyecto1SistemasOperativos {
         ProyectManager PM= new ProyectManager();
         Director director=new Director(PM);
         Almacen almacen= new Almacen();
-        List<ProductorPlaca> Lista = new LinkedList<>();
+        //Mediante la interfaz el usuario puede elegir la cantidad de cada empleado
+        ProductorFuente PFuente[]= new ProductorFuente[3];
+        ProductorPlaca PPlaca[]= new ProductorPlaca[4];
+        ProductorRam PRam[]= new ProductorRam[2];
+        ProductorCPU PCPU[]= new ProductorCPU[2];
+        ProductorTarjetaG PTarjeta[]= new ProductorTarjetaG[1];
+        //Mediante la interfaz tambien se asigna la cantidad de unidades segun el numero de cedula
         for (int i = 1; i<=5;i++){
-            ProductorPlaca ProductorP= new ProductorPlaca(i,almacen,2);
-            Lista.add(ProductorP);
+               PPlaca[i]= new ProductorPlaca(i,almacen,2);
         }
-        Empresa HP = new Empresa("HP",PM,director,Lista);
-        HP.SolicitarPM().contratar(HP);
-        ListIterator<ProductorPlaca> iterador = Lista.listIterator();
-            while(iterador.hasNext()){
-                System.out.println(iterador.next().getID());
-            }
-            while(iterador.hasNext()){
-                iterador.next().Contratar(HP);
-            }
-            while(iterador.hasNext()){
-                iterador.next().start();
-            }
-        PM.start();
+        Empresa HP= new Empresa("HP",PM,director,PPlaca,PFuente,PCPU,PTarjeta,PRam);
+        PM.contratar(HP);
         
     }
     
