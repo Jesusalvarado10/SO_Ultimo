@@ -6,10 +6,7 @@ package Class;
 
 import Class.Empresa;
 
-/**
- *
- * @author gabga
- */
+
 public class ProyectManager extends Thread{
     private int Days;
     private Empresa Empresa;
@@ -32,8 +29,6 @@ public class ProyectManager extends Thread{
             this.Days++;
             //Comienzo del dia
             System.out.println("Dia " + this.Days);
-            
-            
             try{
             Thread.sleep(1000);
         } catch (InterruptedException e){

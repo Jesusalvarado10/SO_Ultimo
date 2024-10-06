@@ -10,6 +10,8 @@ import Class.Almacen;
  *
  * @author gabga
  */
+
+//Implementar el concepto de la clase Hilos que se hizo para experimentar
 public class Empleados extends Thread{
     protected int PagaPorHora;
     protected Almacen Almacen;
@@ -19,13 +21,21 @@ public class Empleados extends Thread{
     protected int ProduDay;
     protected int unidades;
     
-    public Empleados(int id,String tipo,Almacen almacen,Empresa puntero,int Unidades){
-        this.PagaPorHora=0;
+    public Empleados(int paga,int id,String tipo,Almacen almacen,int Unidades){
+        this.PagaPorHora=paga;
         this.ID=id;
         this.tipo=tipo;
         this.Almacen=almacen;
-        this.PunteroAEmpresa=puntero;
+        this.PunteroAEmpresa=null;
         this.unidades=Unidades;
     }
+    
+    public void Contratar(Empresa empresa){
+        System.out.println("Contratado "+this.ID);
+        this.PunteroAEmpresa=empresa;
+    }
+    
+    public int getID(){
+    return(this.ID);}
     
 }

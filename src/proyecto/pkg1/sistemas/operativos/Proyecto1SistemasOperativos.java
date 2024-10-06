@@ -9,6 +9,7 @@ import Class.ProductorPlaca;
 import Class.Empresa;
 import Class.Director;
 import Class.Almacen;
+import MainUI.MainUIView;
 
 /**
  *
@@ -22,14 +23,9 @@ public class Proyecto1SistemasOperativos {
     //La estrategia es hacer diferentes listas aca con los empleados de cada area
     //Pasar esas listas para la empresa despues
     public static void main(String[] args) {
-        ProyectManager PM= new ProyectManager();
-        Director director= new Director(PM);
-        for (int i =1; i<=5;i++){
-            ProductorPlaca empleado = new ProductorPlaca(i,almacen,);
-            
-        }
-        Empresa empresa = new Empresa("Pepe Corp",PM,director,);
-        Almacen almacen=new Almacen();
+      
+     MainUIView main= new MainUIView();
+     main.setVisible(true);
     }
     
 }
