@@ -13,10 +13,11 @@ import Class.Empleados;
 public class ProductorTarjetaG extends Empleados{
     int capacidad =10;
     int ultimoNumeroCarnet;
-    public ProductorTarjetaG(int last_num_ci,int id, String tipo, Almacen almacen, Empresa puntero, int Unidades) {
-        super(id, tipo, almacen, puntero, Unidades);
-        this.ultimoNumeroCarnet=last_num_ci;
+     public ProductorTarjetaG(int ultimoNumeroCarnet, int paga, int id, String tipo, Almacen almacen, int Unidades) {
+        super(paga, id, tipo, almacen, Unidades);
+        this.ultimoNumeroCarnet = ultimoNumeroCarnet;
     }
+     
     public int produccionDiaria() {
         if (ultimoNumeroCarnet >= 0 && ultimoNumeroCarnet < 5) {
             return 1 / 3;  // 1 tarjeta gráfica cada 3 días
@@ -24,5 +25,27 @@ public class ProductorTarjetaG extends Empleados{
             return 1 / 2;  // 1 tarjeta gráfica cada 2 días
         }
     }
+    
+        public void run(){
+        this.chambear();
+        this.refreshday();
+    }
+    
+    public void refreshday(){
+        this.ProduDay=this.PunteroAEmpresa.SolicitarPM().getDays();
+    }
+    
+    public void chambear(){
+        //int Days=this.PunteroAEmpresa.SolicitarPM().getDays();
+        if (this.ProduDay==2){  
+            //System.out.println("Soy el empleado" + this.ID +" y me voy por el dia "+this.ProduDay);
+        this.ProduDay=0;
+        this.Almacen.almacenar(this.ID,this.tipo,this.unidades);
+        }
+        if (this.ProduDay<2){
+            this.ProduDay++;
+        }
+    }
+
     
 }
