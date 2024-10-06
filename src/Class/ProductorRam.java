@@ -14,9 +14,9 @@ public class ProductorRam extends Empleados{
       int ultimoNumeroCarnet;
         int capacidad;
 
-    public ProductorRam(int  last_num,int id, String tipo, Almacen almacen, Empresa puntero, int Unidades) {
-        super(id, tipo, almacen, puntero, Unidades);
-        this.ultimoNumeroCarnet= last_num;
+public ProductorRam(int ultimoNumeroCarnet, int paga, int id, String tipo, Almacen almacen, int Unidades) {
+           super(paga, id, tipo, almacen, Unidades);
+        this.ultimoNumeroCarnet= ultimoNumeroCarnet;
         this.capacidad=55;
     }
      public int produccionDiaria() {
@@ -28,4 +28,26 @@ public class ProductorRam extends Empleados{
             return 1;  // 1 RAM cada día
         }
     }
+     
+         public void run(){
+        this.chambear();
+        this.refreshday();
+    }
+    
+    public void refreshday(){
+        this.ProduDay=this.PunteroAEmpresa.SolicitarPM().getDays();
+    }
+    
+    public void chambear(){
+        //int Days=this.PunteroAEmpresa.SolicitarPM().getDays();
+        if (this.ProduDay==2){  
+            //System.out.println("Soy el empleado" + this.ID +" y me voy por el dia "+this.ProduDay);
+        this.ProduDay=0;
+        this.Almacen.almacenar(this.ID,this.tipo,this.unidades);
+        }
+        if (this.ProduDay<2){
+            this.ProduDay++;
+        }
+    }
+     
 }

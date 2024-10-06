@@ -15,11 +15,12 @@ public class ProductorFuente extends Empleados {
      int ultimoNumeroCarnet;
      int capacidad;
 
-    public ProductorFuente(int  last_num_ci, int id, String tipo, Almacen almacen, Empresa puntero, int Unidades) {
-        super( id, tipo, almacen, puntero, Unidades);
-        this.ultimoNumeroCarnet=last_num_ci;
+    public ProductorFuente(int ultimoNumeroCarnet, int paga, int id, String tipo, Almacen almacen, int Unidades) {
+        super(paga, id, tipo, almacen, Unidades);
+        this.ultimoNumeroCarnet = ultimoNumeroCarnet;
         this.capacidad=35;
     }
+    
        public int produccionDiaria() {
         if (ultimoNumeroCarnet >= 0 && ultimoNumeroCarnet < 3) {
             return 1 / 2;  // 1 CPU cada 2 días
@@ -29,4 +30,25 @@ public class ProductorFuente extends Empleados {
             return 1 / 4;  // 1 CPU cada 4 días
         }
        }
+    public void run(){
+        this.chambear();
+        this.refreshday();
+    }
+    
+    public void refreshday(){
+        this.ProduDay=this.PunteroAEmpresa.SolicitarPM().getDays();
+    }
+    
+    public void chambear(){
+        //int Days=this.PunteroAEmpresa.SolicitarPM().getDays();
+        if (this.ProduDay==2){  
+            //System.out.println("Soy el empleado" + this.ID +" y me voy por el dia "+this.ProduDay);
+        this.ProduDay=0;
+        this.Almacen.almacenar(this.ID,this.tipo,this.unidades);
+        }
+        if (this.ProduDay<2){
+            this.ProduDay++;
+        }
+    }
+
 }

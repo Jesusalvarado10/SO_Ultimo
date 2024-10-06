@@ -5,7 +5,6 @@
 package Class;
 
 import Class.Empresa;
-import Class.Empleados;
 import Class.Almacen;
 
 /**
@@ -16,11 +15,12 @@ public class ProductorPlaca extends Empleados{
     int ultimoNumeroCarnet;
      int capacidad= 25;
 
-    public ProductorPlaca(int last_num_ci,int id, String tipo, Almacen almacen, Empresa puntero, int Unidades) {
-        super(id, tipo, almacen, puntero, Unidades);
-        this.ultimoNumeroCarnet= last_num_ci;
-        
+  public ProductorPlaca(int ultimoNumeroCarnet, int paga, int id, String tipo, Almacen almacen, int Unidades) {
+        super(paga, id, tipo, almacen, Unidades);
+        this.ultimoNumeroCarnet = ultimoNumeroCarnet;
     }
+
+   
     
       public int produccionDiaria() {
         if (ultimoNumeroCarnet >= 0 && ultimoNumeroCarnet < 3) {
