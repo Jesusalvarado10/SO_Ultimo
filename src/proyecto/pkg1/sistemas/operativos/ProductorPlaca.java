@@ -15,8 +15,13 @@ public class ProductorPlaca extends Empleados{
     }
     
     public void run(){
-        this.chambear();
-        this.refreshday();
+        while(true){
+            this.isAlive(); //Literalmente el archivo del coco de TFT2
+           if(this.diaspro>2){
+                this.Almacen.almacenar(this.ID, this.tipo, this.unidades);
+                this.reiniciardias();
+            }
+        }
     }
     
     public void refreshday(){
@@ -25,7 +30,7 @@ public class ProductorPlaca extends Empleados{
     
     public void chambear(){
         //int Days=this.PunteroAEmpresa.SolicitarPM().getDays();
-        if (this.ProduDay==2){  
+        if (this.ProduDay>2){  
             //System.out.println("Soy el empleado" + this.ID +" y me voy por el dia "+this.ProduDay);
         this.ProduDay=0;
         this.Almacen.almacenar(this.ID,this.tipo,this.unidades);

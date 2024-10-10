@@ -10,8 +10,8 @@ import java.util.ListIterator;
  *
  * @author gabga
  */
-public class Proyecto1SistemasOperativos {
 
+public class Proyecto1SistemasOperativos {
     /**
      * @param args the command line arguments
      */
@@ -21,18 +21,44 @@ public class Proyecto1SistemasOperativos {
         ProyectManager PM= new ProyectManager();
         Director director=new Director(PM);
         Almacen almacen= new Almacen();
-        //Mediante la interfaz el usuario puede elegir la cantidad de cada empleado
-        ProductorFuente PFuente[]= new ProductorFuente[3];
-        ProductorPlaca PPlaca[]= new ProductorPlaca[4];
-        ProductorRam PRam[]= new ProductorRam[2];
-        ProductorCPU PCPU[]= new ProductorCPU[2];
-        ProductorTarjetaG PTarjeta[]= new ProductorTarjetaG[1];
-        //Mediante la interfaz tambien se asigna la cantidad de unidades segun el numero de cedula
-        for (int i = 1; i<=5;i++){
-               PPlaca[i]= new ProductorPlaca(i,almacen,2);
+        //Mediante la interfaz el usuario puede elegir la cantidad de cada empleado y la maxima produccion
+        int CFuente=7;
+        int CPlaca=8;
+        int CRam=5;
+        int CCPU=2;
+        int CTarjeta=3;
+        int PF=2;
+        int PP=1;
+        int PR=2;
+        int PC=3;
+        int PT=1;
+        //Declaracion de los arrays
+        ProductorFuente PFuente[]= new ProductorFuente[CFuente];
+        ProductorPlaca PPlaca[]= new ProductorPlaca[CPlaca];
+        ProductorRam PRam[]= new ProductorRam[CRam];
+        ProductorCPU PCPU[]= new ProductorCPU[CCPU];
+        ProductorTarjetaG PTarjeta[]= new ProductorTarjetaG[CTarjeta];
+        Ensamblador ensamblador= new Ensamblador(almacen);
+//        Object listaempleados[]= new Object[CFuente+CPlaca+CRam+CCPU+CTarjeta];
+        //Creacion individual de cada array
+        for (int i = 0; i<=CPlaca-1;i++){
+               PPlaca[i]= new ProductorPlaca(i,almacen,PP);
         }
-        Empresa HP= new Empresa("HP",PM,director,PPlaca,PFuente,PCPU,PTarjeta,PRam);
-        PM.contratar(HP);
+        for (int i=0; i<=CFuente-1;i++){
+            PFuente[i]=new ProductorFuente(i,almacen,PF);
+        }
+        for (int i=0; i<=CCPU-1;i++){
+            PCPU[i]=new ProductorCPU(i,almacen,PC);
+        }
+        for (int i=0; i<=CTarjeta-1;i++){
+            PTarjeta[i]=new ProductorTarjetaG(i,almacen,PT);
+        }
+        for (int i=0; i<=CRam-1;i++){
+            PRam[i]=new ProductorRam(i,almacen,PR);
+        }
+        //Creacion de la empresa
+        Empresa HP= new Empresa("HP",PM,director,PPlaca,PFuente,PCPU,PTarjeta,PRam,ensamblador,almacen);
+        HP.SolicitarPM().start();
         
     }
     

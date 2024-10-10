@@ -30,15 +30,61 @@ public class ProyectManager extends Thread{
     
     @Override
     public void run(){
+        for (int i = 0; i<=Empresa.SolicitarPPlacas().length-1;i++){
+                    this.Empresa.SolicitarPPlacas()[i].start();
+                }
+        for (int i = 0; i<=Empresa.SolicitarPCPU().length-1;i++){
+                    this.Empresa.SolicitarPCPU()[i].start();
+                }
+        for (int i = 0; i<=Empresa.SolicitarPFuente().length-1;i++){
+                    this.Empresa.SolicitarPFuente()[i].start();
+                }
+        for (int i = 0; i<=Empresa.SolicitarPRam().length-1;i++){
+                    this.Empresa.SolicitarPRam()[i].start();
+                }
+        for (int i = 0; i<=Empresa.SolicitarPTarjeta().length-1;i++){
+                    this.Empresa.SolicitarPTarjeta()[i].start();
+                }
+        this.Empresa.getEnsamblador().start();
+        this.Empresa.SolicitarDirector().start();
         while (true){
-            this.Days++;
-            //Comienzo del dia
-            System.out.println("Dia " + this.Days);
+            this.Empresa.SolicitarDirector().CountDays();
             try{
-            Thread.sleep(1000);
-        } catch (InterruptedException e){
-                System.out.println("Error");
-        }
+                System.out.println("Produccion para el dia: "+this.Days);
+                for (int i = 1; i<=this.Empresa.SolicitarPPlacas().length-1;i++){
+                    this.Empresa.SolicitarPPlacas()[i].sumardias();
+                }
+                
+                for (int i = 0; i<=Empresa.SolicitarPPlacas().length-1;i++){
+                    this.Empresa.SolicitarPPlacas()[i].sumardias();
+                }
+                for (int i = 0; i<=Empresa.SolicitarPCPU().length-1;i++){
+                            this.Empresa.SolicitarPCPU()[i].sumardias();
+                        }
+                for (int i = 0; i<=Empresa.SolicitarPFuente().length-1;i++){
+                            this.Empresa.SolicitarPFuente()[i].sumardias();
+                        }
+                for (int i = 0; i<=Empresa.SolicitarPRam().length-1;i++){
+                            this.Empresa.SolicitarPRam()[i].sumardias();
+                        }
+                for (int i = 0; i<=Empresa.SolicitarPTarjeta().length-1;i++){
+                            this.Empresa.SolicitarPTarjeta()[i].sumardias();
+                        }
+                Thread.sleep(2000);
+                
+                this.Days++;
+            } catch(InterruptedException e){
+
+            }
+//        while (true){
+//            this.Days++;
+//            //Comienzo del dia
+//            System.out.println("Dia " + this.Days);
+//            try{
+//            Thread.sleep(1000);
+//        } catch (InterruptedException e){
+//                System.out.println("Error");
+//        }
     }
 }
 }
