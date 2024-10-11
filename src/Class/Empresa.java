@@ -79,7 +79,13 @@ public class Empresa {
         }
         
     }
-
+    
+    public void cambiarpuesto(String tipoInicial, String tipoFinal){
+        switch(tipoFinal){
+            case("CPU"): 
+                    for (int i;)
+        }
+    }
     public void setGanancias(int Ganancias) {
         this.Ganancias = this.Ganancias+Ganancias;
         System.out.println("Ganancias brutas de la empresa: "+this.Ganancias);

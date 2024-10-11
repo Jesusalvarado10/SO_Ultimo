@@ -34,8 +34,6 @@ public class Main {
         this.PR=CI;
         this.PC=CI;
         this.PT=CI;
-        
-    
     }
 public void setHP( prueba m, int cpu, int fuente, int placa, int ram, int tarjeta){
          this.CCPUHP=cpu;
@@ -52,11 +50,12 @@ public void setHP( prueba m, int cpu, int fuente, int placa, int ram, int tarjet
         ProyectManager PM= new ProyectManager();
         Director director=new Director(PM);
         Almacen almacen= new Almacen(m);
-        ProductorFuente PFuente[]= new ProductorFuente[CFuenteHP];
-        ProductorPlaca PPlaca[]= new ProductorPlaca[CPlacaHP];
-        ProductorRam PRam[]= new ProductorRam[CRamHP];
-        ProductorCPU PCPU[]= new ProductorCPU[CCPUHP];
-        ProductorTarjetaG PTarjeta[]= new ProductorTarjetaG[CTarjetaHP];
+        //Nuevo array
+        ProductorFuente PFuente[]= new ProductorFuente[10+CFuenteHP];
+        ProductorPlaca PPlaca[]= new ProductorPlaca[10+CPlacaHP];
+        ProductorRam PRam[]= new ProductorRam[10+CRamHP];
+        ProductorCPU PCPU[]= new ProductorCPU[10+CCPUHP];
+        ProductorTarjetaG PTarjeta[]= new ProductorTarjetaG[10+CTarjetaHP];
         Ensamblador ensamblador= new Ensamblador (almacen);
         for (int i = 0; i<CPlacaHP;i++){
                PPlaca[i]= new ProductorPlaca(i,almacen,PP);
