@@ -36,7 +36,7 @@ public class Main {
         this.PC=CI;
         this.PT=CI;
     }
-public void setHP( prueba m, int cpu, int fuente, int placa, int ram, int tarjeta,int max){
+public void setHP( prueba m, int cpu, int fuente, int placa, int ram, int tarjeta,int max,int day){
          this.CCPUHP=cpu;
          this.CFuenteHP=fuente;
          this.CPlacaHP=placa;
@@ -49,7 +49,7 @@ public void setHP( prueba m, int cpu, int fuente, int placa, int ram, int tarjet
         System.out.println("Tarjetas"+CTarjetaHP);
         
         ProyectManager PM= new ProyectManager(max);
-        Director director=new Director(PM);
+        Director director=new Director(PM,day);
         Almacen almacen= new Almacen(m);
         //Nuevo array
         ProductorFuente PFuente[]= new ProductorFuente[10+CFuenteHP];
@@ -78,14 +78,14 @@ public void setHP( prueba m, int cpu, int fuente, int placa, int ram, int tarjet
         this.hp=HP;
         HP.SolicitarPM().start();
 }    
-     public void setHMSI( prueba m, int cpu, int fuente, int placa, int ram, int tarjeta,int max){
+     public void setHMSI( prueba m, int cpu, int fuente, int placa, int ram, int tarjeta,int max, int day){
          this.CCPUMSI=cpu;
          this.CFuenteMSI=fuente;
          this.CPlacaMSI=placa;
          this.CRamMSI=ram;
          this.CTarjetaMSI=tarjeta;
         ProyectManager PM= new ProyectManager(max);
-        Director director=new Director(PM);
+        Director director=new Director(PM,day);
         Almacen almacen= new Almacen(m);
         ProductorFuente PFuente[]= new ProductorFuente[CFuenteMSI];
         ProductorPlaca PPlaca[]= new ProductorPlaca[CPlacaMSI];

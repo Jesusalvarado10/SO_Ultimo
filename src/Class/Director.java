@@ -12,10 +12,12 @@ public class Director extends Thread{
     ProyectManager PM;
     int DaysLeft;
     Empresa punteroEmpresa;
-    public Director(ProyectManager PoM){
+    int DaysBase;
+    public Director(ProyectManager PoM,int day){
         this.PM=PoM;
-        this.DaysLeft=11;
+        this.DaysLeft=day;
         this.punteroEmpresa=null;
+        this.DaysBase=day;
     }
     
     public void contratar(Empresa empresa){
@@ -34,7 +36,7 @@ public class Director extends Thread{
                 this.punteroEmpresa.setGanancias(this.punteroEmpresa.accesoAlmacen().EnviarPC(this.punteroEmpresa.getGanancia(), this.punteroEmpresa.getGananciaE()));
                 try{
                     Thread.sleep(2000);
-                    this.DaysLeft=10;
+                    this.DaysLeft=DaysBase;
                 }catch(InterruptedException e){System.out.println("Algo paso con el director");}
             }
         } 

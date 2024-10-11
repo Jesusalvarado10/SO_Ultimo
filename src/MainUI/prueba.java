@@ -469,7 +469,8 @@ public JPanel createConfigPanel() {
                     (int) InputHP1.getValue(),
                     (int) InputHP2.getValue(),
                     (int) InputHP6.getValue(),
-                    (int)InputDay.getValue()
+                    (int)InputDay.getValue(),
+                    (int)InputDaysDelivery.getValue()
                 );
                 click=true;
 
@@ -555,7 +556,7 @@ JLabel status22;
         status2.setText("Status: Viendo anime");
         }
         else{
-        status2.setText("Status: Trabjando");
+        status2.setText("Status: Trabajando");
         
         }
         
@@ -565,7 +566,7 @@ JLabel status22;
         status22.setText("Status: Viendo anime");
         }
         else{
-        status22.setText("Status: Viendo anime");
+            status22.setText("Status: Trabajando");
         
         }
         
@@ -793,7 +794,8 @@ JLabel status22;
                     (int) InputMSI1.getValue(),
                     (int) InputMSI2.getValue(),
                     (int) InputMSI6.getValue(),
-                      (int)InputDay.getValue()
+                      (int)InputDay.getValue(),
+                      (int)InputDaysDelivery.getValue()
                 );
 
                 // Desactivar el MouseListener después del primer clic
