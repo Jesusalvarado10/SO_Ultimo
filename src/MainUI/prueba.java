@@ -20,6 +20,8 @@ import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTabbedPane;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /**
  *
@@ -42,20 +44,20 @@ public class prueba extends javax.swing.JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         int lastNumber=5;
         this.m= new Main( lastNumber);
-         SpinnerNumberModel modeloSpinner1 = new SpinnerNumberModel(1, 1, 12 + lastNumber, 1);
-        SpinnerNumberModel modeloSpinner2 = new SpinnerNumberModel(1, 1, 12 + lastNumber, 1);
-        SpinnerNumberModel modeloSpinner3 = new SpinnerNumberModel(1, 1, 12 + lastNumber, 1);
-        SpinnerNumberModel modeloSpinner4 = new SpinnerNumberModel(1, 1, 12 + lastNumber, 1);
-        SpinnerNumberModel modeloSpinner5 = new SpinnerNumberModel(1, 1, 12 + lastNumber, 1);
-        SpinnerNumberModel modeloSpinner6 = new SpinnerNumberModel(1, 1, 12 + lastNumber, 1);
-        SpinnerNumberModel modeloSpinner7 = new SpinnerNumberModel(1, 1, 12 + lastNumber, 1);
-        SpinnerNumberModel modeloSpinner8 = new SpinnerNumberModel(1, 1, 12 + lastNumber, 1);
-        SpinnerNumberModel modeloSpinner9 = new SpinnerNumberModel(1, 1, 12 + lastNumber, 1);
-        SpinnerNumberModel modeloSpinner10 = new SpinnerNumberModel(1, 1, 12 + lastNumber, 1);
+         SpinnerNumberModel modeloSpinner1 = new SpinnerNumberModel(12 + lastNumber, 12 + lastNumber, 12 + 9, 1);
+         SpinnerNumberModel modeloSpinner2 = new SpinnerNumberModel(12 + lastNumber, 12 + lastNumber, 12 + 9, 1);
+        SpinnerNumberModel modeloSpinner3  = new SpinnerNumberModel(12 + lastNumber, 12 + lastNumber, 12 + 9, 1);
+        SpinnerNumberModel modeloSpinner4 = new SpinnerNumberModel(12 + lastNumber, 12 + lastNumber, 12 + 9, 1);
+        SpinnerNumberModel modeloSpinner5  = new SpinnerNumberModel(12 + lastNumber, 12 + lastNumber, 12 + 9, 1);
+        SpinnerNumberModel modeloSpinner6  = new SpinnerNumberModel(12 + lastNumber, 12 + lastNumber, 12 + 9, 1);
+        SpinnerNumberModel modeloSpinner7 = new SpinnerNumberModel(12 + lastNumber, 12 + lastNumber, 12 + 9, 1);
+        SpinnerNumberModel modeloSpinner8  = new SpinnerNumberModel(12 + lastNumber, 12 + lastNumber, 12 + 9, 1);
+        SpinnerNumberModel modeloSpinner9 = new SpinnerNumberModel(12 + lastNumber, 12 + lastNumber, 12 + 9, 1);
+        SpinnerNumberModel modeloSpinner10 = new SpinnerNumberModel(12 + lastNumber, 12 + lastNumber, 12 + 9, 1);
         SpinnerNumberModel modeloSpinner11 = new SpinnerNumberModel(1, 1, 100, 1);
         SpinnerNumberModel modeloSpinner12 = new SpinnerNumberModel(1, 1, 100, 1);
-        SpinnerNumberModel modeloSpinner13 = new SpinnerNumberModel(1, 1, 12 + lastNumber, 1);
-        SpinnerNumberModel modeloSpinner14 = new SpinnerNumberModel(1, 1, 12 + lastNumber, 1);
+        SpinnerNumberModel modeloSpinner13  = new SpinnerNumberModel(12 + lastNumber, 12 + lastNumber, 12 + 9, 1);
+        SpinnerNumberModel modeloSpinner14 = new SpinnerNumberModel(12 + lastNumber, 12 + lastNumber, 12 + 9, 1);
         InputMSI1 = new JSpinner(modeloSpinner1);
         InputMSI2 = new JSpinner(modeloSpinner2);
         InputMSI3 = new JSpinner(modeloSpinner3);
@@ -295,6 +297,18 @@ public JPanel createConfigPanel() {
          JLabel lblCosts;
          JLabel lblTotalProfit;
          JLabel lblDaysLeft;
+           JLabel lblTarjetas1;
+         JLabel lblPlacaBase1;
+         JLabel lblCPUs1;
+         JLabel lblRAM1;
+         JLabel lblFuenteAlimentacion1;
+         JLabel lblEarnings1;
+         JLabel lblCosts1;
+         JLabel lblTotalProfit1;
+         JLabel lblDaysLeft1;
+         boolean click=false;
+         JLabel status2;
+         
          
  public JPanel createHPPanel() {
         
@@ -326,7 +340,7 @@ public JPanel createConfigPanel() {
         lblProjectManager.setFont(new Font("Arial", Font.BOLD, 24));
         lblProjectManager.setForeground(lightGreen);
 
-        JLabel lblProductionParts = new JLabel("PRODUCTION PARTS");
+        JLabel lblProductionParts = new JLabel("PARTES EN PRODUCCION");
         lblProductionParts.setFont(new Font("Arial", Font.BOLD, 24));
         lblProductionParts.setForeground(lightGreen);
 
@@ -346,17 +360,17 @@ public JPanel createConfigPanel() {
         lblFuenteAlimentacion = new JLabel("Fuente de alimentación: 0 / 55");
         lblFuenteAlimentacion.setForeground(Color.white);
 
-        lblEarnings = new JLabel("Earnings: 0");
+        lblEarnings = new JLabel("GANANCIAS: 0");
         lblEarnings.setForeground(Color.white);
 
-        lblCosts = new JLabel("Costs: 0");
+        lblCosts = new JLabel("COSTOS: 0");
         lblCosts.setForeground(Color.white);
 
-        lblTotalProfit = new JLabel("TOTAL PROFIT: 0");
+        lblTotalProfit = new JLabel("TOTAL DE GANANCIAS: 0");
         lblTotalProfit.setFont(new Font("Arial", Font.BOLD, 18));
         lblTotalProfit.setForeground(lightGreen);
 
-        lblDaysLeft = new JLabel("DAYS LEFT: 0");
+        lblDaysLeft = new JLabel("QUEDAN DIAS: 0");
         lblDaysLeft.setForeground(lightGreen);
 
         // Agregar los componentes usando GridBagLayout
@@ -379,7 +393,7 @@ public JPanel createConfigPanel() {
 
         gbc.gridy++;
      
-        JLabel status2 = new JLabel("Status: Nothing");
+         status2 = new JLabel("Status: Nothing");
         status2.setForeground(Color.white);
         innerPanel.add(status2, gbc);
         gbc.gridx = 0;
@@ -414,9 +428,10 @@ public JPanel createConfigPanel() {
         // Days left
         gbc.gridy++;
         innerPanel.add(lblDaysLeft, gbc);
-
+        
         // Agregar el panel al BorderLayout
         panel.add(innerPanel, BorderLayout.CENTER);
+   
         
         panel.addMouseListener(new MouseAdapter() {
             @Override
@@ -428,20 +443,109 @@ public JPanel createConfigPanel() {
                     (int) InputHP3.getValue(),
                     (int) InputHP1.getValue(),
                     (int) InputHP2.getValue(),
-                    (int) InputHP6.getValue()
+                    (int) InputHP6.getValue(),
+                    (int)InputDaysDelivery.getValue()
                 );
+                click=true;
 
                 // Desactivar el MouseListener después del primer clic
                 System.out.print("Entro");
                 panel.removeMouseListener(this);
             }
         });
+        final int[] valoresAnteriores = {
+    (int) InputHP1.getValue(),
+    (int) InputHP2.getValue(),
+    (int) InputHP3.getValue(),
+    (int) InputHP4.getValue(),
+    (int) InputHP6.getValue()
+};
+
+// Función para manejar cambios en los JSpinner
+ChangeListener changeListener = new ChangeListener() {
+    @Override
+    public void stateChanged(ChangeEvent e) {
+        if (click){
+        JSpinner source = (JSpinner) e.getSource();
+        int valorActual = (int) source.getValue();
+        int indice = -1;
+        String x;
+        // Identificar cuál JSpinner cambió
+        if (source == InputHP1) {
+             x="Placa";
+            indice = 0;
+        } else if (source == InputHP2) {
+             x="Ram";
+            indice = 1;
+        } else if (source == InputHP3) {
+            x="Fuente";
+            indice = 2;
+        } else if (source == InputHP4) {
+             x="CPU";
+            indice = 3;
+        } else if (source == InputHP6) {
+             x="Tarjeta";
+            indice = 4;
+        }
+        else{
+        x="";
+        }
+
+        // Comparar el valor actual con el valor anterior
+        if (indice != -1) {
+            if (valorActual > valoresAnteriores[indice]) {
+                System.out.println(); System.out.println(); System.out.println(); System.out.println(); System.out.println();
+                System.out.println("El valor de InputHP" + (indice + 1) + " ha aumentado de " + valoresAnteriores[indice] + " a " + valorActual);
+                               System.out.println();
+                                System.out.println();
+                                 System.out.println(); System.out.println();
+                                  System.out.println();
+                System.out.println("El valor de InputHP" + (indice + 1) + " ha aumentado de " + valoresAnteriores[indice] + " a " + valorActual);
+                m.setaddHP(x);
+            } else if (valorActual < valoresAnteriores[indice]) {
+                System.out.println("El valor de InputHP" + (indice + 1) + " ha disminuido de " + valoresAnteriores[indice] + " a " + valorActual);
+                m.setdeleteHP(x);
+            }
+
+            // Actualizar el valor anterior
+            valoresAnteriores[indice] = valorActual;
+        }}
+    }
+};
+
+// Agregar el ChangeListener a cada JSpinner
+InputHP1.addChangeListener(changeListener);
+InputHP2.addChangeListener(changeListener);
+InputHP3.addChangeListener(changeListener);
+InputHP4.addChangeListener(changeListener);
+InputHP6.addChangeListener(changeListener);
         return panel;
     }
 
-
+JLabel status22;
 
     // Métodos para actualizar dinámicamente los valores
+    public void PM(boolean t) {
+        if(t==true){
+        status2.setText("Status: Viendo anime");
+        }
+        else{
+        status2.setText("Status: Trabjando");
+        
+        }
+        
+    }
+    public void PM1(boolean t) {
+        if(t){
+        status22.setText("Status: Viendo anime");
+        }
+        else{
+        status22.setText("Status: Viendo anime");
+        
+        }
+        
+    }
+
     public void updateTarjetas(int current, int total) {
         lblTarjetas.setText("Tarjetas: " + current + " / " + total);
     }
@@ -461,21 +565,73 @@ public JPanel createConfigPanel() {
     public void updateFuenteAlimentacion(int current, int total) {
         lblFuenteAlimentacion.setText("Fuente de alimentación: " + current + " / " + total);
     }
-
+    int ganancias = 0;
     public void updateEarnings(int earnings) {
-        lblEarnings.setText("Earnings: " + earnings);
+        lblEarnings.setText("GANANCIAS: " + earnings);
+        this.ganancias=earnings;
     }
 
     public void updateCosts(int costs) {
-        lblCosts.setText("Costs: " + costs);
+         int cpu= (int) InputHP4.getValue() *26*costs;
+        int fuente= (int) InputHP3.getValue() * 16*costs;
+        int placa= (int) InputHP1.getValue()*20*costs;
+        int ram =   (int) InputHP2.getValue() *40*costs;
+        int tarjeta = (int) InputHP6.getValue()*34*costs;
+        int total = cpu+fuente+placa+ram+tarjeta;
+        lblCosts.setText("COSTOS: " + total);
+        this.updateTotalProfit(this.ganancias-total);
     }
 
     public void updateTotalProfit(int profit) {
-        lblTotalProfit.setText("TOTAL PROFIT: " + profit);
+        lblTotalProfit.setText("TOTAL DE GANANCIAS: " + profit);
     }
 
     public void updateDaysLeft(int daysLeft) {
-        lblDaysLeft.setText("DAYS LEFT: " + daysLeft);
+        lblDaysLeft.setText("QUEDAN DIAS: " + daysLeft);
+    }
+
+    public void updateTarjetas1(int current, int total) {
+        lblTarjetas1.setText("Tarjetas: " + current + " / " + total);
+    }
+
+    public void updatePlacaBase1(int current, int total) {
+        lblPlacaBase1.setText("Placa base: " + current + " / " + total);
+    }
+
+    public void updateCPUs1(int current, int total) {
+        lblCPUs1.setText("CPUs: " + current + " / " + total);
+    }
+
+    public void updateRAM1(int current, int total) {
+        lblRAM1.setText("Memoria RAM: " + current + " / " + total);
+    }
+
+    public void updateFuenteAlimentacion1(int current, int total) {
+        lblFuenteAlimentacion1.setText("Fuente de alimentación: " + current + " / " + total);
+    }
+    int ganancias1 = 0;
+    public void updateEarnings1(int earnings) {
+        lblEarnings1.setText("GANANCIAS: " + earnings);
+        this.ganancias1=earnings;
+    }
+
+    public void updateCosts1(int costs) {
+        int cpu= (int) InputMSI4.getValue() *26*costs;
+        int fuente= (int) InputMSI3.getValue() * 16*costs;
+        int placa= (int) InputMSI1.getValue()*20*costs;
+        int ram =   (int) InputMSI2.getValue() *40*costs;
+        int tarjeta = (int) InputMSI6.getValue()*34*costs;
+        int total = cpu+fuente+placa+ram+tarjeta;
+        lblCosts1.setText("COSTOS: " + total);
+        this.updateTotalProfit1(this.ganancias1-total);
+    }
+
+    public void updateTotalProfit1(int profit) {
+        lblTotalProfit1.setText("TOTAL  DE GANANCIAS: " + profit);
+    }
+
+    public void updateDaysLeft1(int daysLeft) {
+        lblDaysLeft1.setText("QUEDAN DIAS: " + daysLeft);
     }
 
 
@@ -508,38 +664,38 @@ public JPanel createConfigPanel() {
         lblProjectManager.setFont(new Font("Arial", Font.BOLD, 24));
         lblProjectManager.setForeground(lightGreen);
 
-        JLabel lblProductionParts = new JLabel("PRODUCTION PARTS");
+        JLabel lblProductionParts = new JLabel("PARTES EN PRODUCCION");
         lblProductionParts.setFont(new Font("Arial", Font.BOLD, 24));
         lblProductionParts.setForeground(lightGreen);
 
         // Secciones de "Componentes"
-        lblTarjetas = new JLabel("Tarjetas: 0 / 35");
-        lblTarjetas.setForeground(Color.white);
+        lblTarjetas1 = new JLabel("Tarjetas: 0 / 35");
+        lblTarjetas1.setForeground(Color.white);
 
-        lblPlacaBase = new JLabel("Placa base: 0 / 25");
-        lblPlacaBase.setForeground(Color.white);
+        lblPlacaBase1 = new JLabel("Placa base: 0 / 25");
+        lblPlacaBase1.setForeground(Color.white);
 
-        lblCPUs = new JLabel("CPUs: 0 / 20");
-        lblCPUs.setForeground(Color.white);
+        lblCPUs1 = new JLabel("CPUs: 0 / 20");
+        lblCPUs1.setForeground(Color.white);
 
-        lblRAM = new JLabel("Memoria RAM: 0 / 55");
-        lblRAM.setForeground(Color.white);
+        lblRAM1 = new JLabel("Memoria RAM: 0 / 55");
+        lblRAM1.setForeground(Color.white);
 
-        lblFuenteAlimentacion = new JLabel("Fuente de alimentación: 0 / 55");
-        lblFuenteAlimentacion.setForeground(Color.white);
+        lblFuenteAlimentacion1 = new JLabel("Fuente de alimentación: 0 / 55");
+        lblFuenteAlimentacion1.setForeground(Color.white);
 
-        lblEarnings = new JLabel("Earnings: 0");
-        lblEarnings.setForeground(Color.white);
+        lblEarnings1 = new JLabel("GANANCIAS: 0");
+        lblEarnings1.setForeground(Color.white);
 
-        lblCosts = new JLabel("Costs: 0");
-        lblCosts.setForeground(Color.white);
+        lblCosts1 = new JLabel("COSTOS: 0");
+        lblCosts1.setForeground(Color.white);
 
-        lblTotalProfit = new JLabel("TOTAL PROFIT: 0");
-        lblTotalProfit.setFont(new Font("Arial", Font.BOLD, 18));
-        lblTotalProfit.setForeground(lightGreen);
+        lblTotalProfit1 = new JLabel("TOTAL DE GANANCIAS: 0");
+        lblTotalProfit1.setFont(new Font("Arial", Font.BOLD, 18));
+        lblTotalProfit1.setForeground(lightGreen);
 
-        lblDaysLeft = new JLabel("DAYS LEFT: 0");
-        lblDaysLeft.setForeground(lightGreen);
+        lblDaysLeft1 = new JLabel("QUEDAN DIAS: 0");
+        lblDaysLeft1.setForeground(lightGreen);
 
         // Agregar los componentes usando GridBagLayout
         gbc.gridx = 0;
@@ -561,9 +717,9 @@ public JPanel createConfigPanel() {
 
         gbc.gridy++;
      
-        JLabel status2 = new JLabel("Status: Nothing");
-        status2.setForeground(Color.white);
-        innerPanel.add(status2, gbc);
+        status22 = new JLabel("Status: Nothing");
+        status22.setForeground(Color.white);
+        innerPanel.add(status22, gbc);
         gbc.gridx = 0;
         gbc.gridy++;
         gbc.gridwidth = 2;
@@ -572,34 +728,123 @@ public JPanel createConfigPanel() {
         // Section for Production Parts
         gbc.gridy++;
         gbc.gridwidth = 1;
-        innerPanel.add(lblTarjetas, gbc);
+        innerPanel.add(lblTarjetas1, gbc);
         gbc.gridy++;
-        innerPanel.add(lblPlacaBase, gbc);
+        innerPanel.add(lblPlacaBase1, gbc);
         gbc.gridy++;
-        innerPanel.add(lblCPUs, gbc);
+        innerPanel.add(lblCPUs1, gbc);
         gbc.gridy++;
-        innerPanel.add(lblRAM, gbc);
+        innerPanel.add(lblRAM1, gbc);
         gbc.gridy++;
-        innerPanel.add(lblFuenteAlimentacion, gbc);
+        innerPanel.add(lblFuenteAlimentacion1, gbc);
 
         // Earnings, Costs, and Total Profit
         gbc.gridy++;
-        innerPanel.add(lblEarnings, gbc);
+        innerPanel.add(lblEarnings1, gbc);
         gbc.gridy++;
-        innerPanel.add(lblCosts, gbc);
+        innerPanel.add(lblCosts1, gbc);
 
         // Total profit
         gbc.gridy = 1;
         gbc.gridx = 2;
-        innerPanel.add(lblTotalProfit, gbc);
+        innerPanel.add(lblTotalProfit1, gbc);
 
         // Days left
         gbc.gridy++;
-        innerPanel.add(lblDaysLeft, gbc);
+        innerPanel.add(lblDaysLeft1, gbc);
 
         // Agregar el panel al BorderLayout
         panel.add(innerPanel, BorderLayout.CENTER);
+        
+         panel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // Llamada a setHP cuando se hace clic en el panel
+                click=true;
+                m.setHMSI(
+                    prueba.this, // Usar 'this' para referirse a la instancia del JFrame
+                    (int) InputMSI4.getValue(),
+                    (int) InputMSI3.getValue(),
+                    (int) InputMSI1.getValue(),
+                    (int) InputMSI2.getValue(),
+                    (int) InputMSI6.getValue(),
+                      (int)InputDaysDelivery.getValue()
+                );
+
+                // Desactivar el MouseListener después del primer clic
+                System.out.print("Entro");
+                panel.removeMouseListener(this);
+            }
+        });
 //      this.m.setHMSI(this,(int) InputMSI4.getValue(),(int) InputMSI3.getValue(),(int) InputMSI1.getValue(),(int) InputMSI2.getValue(),(int) InputMSI6.getValue());
+       final int[] valoresAnteriores = {
+    (int) InputMSI1.getValue(),
+    (int) InputMSI2.getValue(),
+    (int) InputMSI3.getValue(),
+    (int) InputMSI4.getValue(),
+    (int) InputMSI6.getValue()
+};
+
+// Función para manejar cambios en los JSpinner
+ChangeListener changeListener = new ChangeListener() {
+    @Override
+    public void stateChanged(ChangeEvent e) {
+        if (click){
+        JSpinner source = (JSpinner) e.getSource();
+        int valorActual = (int) source.getValue();
+        int indice = -1;
+        String x;
+        // Identificar cuál JSpinner cambió
+        if (source == InputMSI1) {
+             x="Placa";
+            indice = 0;
+        } else if (source == InputMSI2) {
+             x="Ram";
+            indice = 1;
+        } else if (source == InputMSI3) {
+            x="Fuente";
+            indice = 2;
+        } else if (source == InputMSI4) {
+             x="CPU";
+            indice = 3;
+        } else if (source == InputMSI6) {
+             x="Tarjeta";
+            indice = 4;
+        }
+        else{
+        x="";
+        }
+
+        // Comparar el valor actual con el valor anterior
+        if (indice != -1) {
+            if (valorActual > valoresAnteriores[indice]) {
+                
+                 System.out.println(); System.out.println(); System.out.println(); System.out.println(); System.out.println();
+                System.out.println("El valor de InputHP" + (indice + 1) + " ha aumentado de " + valoresAnteriores[indice] + " a " + valorActual);
+                               System.out.println();
+                                System.out.println();
+                                 System.out.println(); System.out.println();
+                                  System.out.println();
+                                   System.out.println();
+                                 
+                m.setaddMSI(x);
+            } else if (valorActual < valoresAnteriores[indice]) {
+                System.out.println("El valor de InputHP" + (indice + 1) + " ha disminuido de " + valoresAnteriores[indice] + " a " + valorActual);
+                m.setdeleteMSI(x);
+            }
+
+            // Actualizar el valor anterior
+            valoresAnteriores[indice] = valorActual;
+        }}
+    }
+};
+
+// Agregar el ChangeListener a cada JSpinner
+InputHP1.addChangeListener(changeListener);
+InputHP2.addChangeListener(changeListener);
+InputHP3.addChangeListener(changeListener);
+InputHP4.addChangeListener(changeListener);
+InputHP6.addChangeListener(changeListener);
         return panel;
     }
 

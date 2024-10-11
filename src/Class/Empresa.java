@@ -45,7 +45,9 @@ public class Empresa {
         this.PRam=ListaR;
         this.ensamblador=ensamblador_;
         this.Almacen=almacen;
-   
+       almacen.setDirector(director);
+        almacen.setPM(pm);
+        almacen.setName(nombre);
         if (this.Nombre.equals("HP")){
             this.ganancia=90000;
             this.gananciaE=140000;
@@ -63,23 +65,41 @@ public class Empresa {
         ensamblador.contratar(this);
         director.contratar(this);
         for (int i = 0; i<=this.PPlacas.length-1;i++){
+            if(this.PPlacas[i]==null){
+            break;
+            }
                this.PPlacas[i].Contratar(this);
         }
         for (int i = 0; i<=this.PFuente.length-1;i++){
+                   if(this.PFuente[i]==null){
+            break;
+            }
                this.PFuente[i].Contratar(this);
         }
         for (int i = 0; i<=this.PCPU.length-1;i++){
+                   if(this.PCPU[i]==null){
+            break;
+            }
                this.PCPU[i].Contratar(this);
         }
         for (int i = 0; i<=this.PTarjeta.length-1;i++){
+                  if(this.PTarjeta[i]==null){
+            break;
+            }
                this.PTarjeta[i].Contratar(this);
         }
         for (int i = 0; i<=this.PRam.length-1;i++){
+                  if(this.PRam[i]==null){
+            break;
+            }
                this.PRam[i].Contratar(this);
         }
         
     }
-    
+    public void setData(boolean t){
+        this.Almacen.vista.PM(t);
+        this.Almacen.vista.PM1(t);
+    }
     public void cambiarpuesto(String tipoInicial, String tipoFinal){
         Object Ultimo;
         int position=0;

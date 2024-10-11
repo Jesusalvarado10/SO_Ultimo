@@ -46,5 +46,9 @@ public class Director extends Thread{
             System.out.println("El Director dice: FALTAN " + this.DaysLeft + " DIAS!!");
         }
 }
+    public int getDaysLeft() {
+        return DaysLeft;
+    }
     
+
 }

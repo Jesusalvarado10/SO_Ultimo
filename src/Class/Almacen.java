@@ -12,6 +12,7 @@ import javax.swing.JPanel;
  * @author gabga
  */
 public class Almacen {
+    String name;
     private int EspacioPlaca;
     private int EspacioRam;
     private int EspacioTarjeta;
@@ -21,7 +22,9 @@ public class Almacen {
     private int Computadores;
     private int ComputadoresE;
     private int compcount;
-    private prueba vista;
+     prueba vista;
+    Director m;
+    ProyectManager a;
     
     public Almacen( prueba vista ){
         this.EspacioPlaca=0;
@@ -36,7 +39,9 @@ public class Almacen {
     }
     
     public int EnviarPC(int ganancia,int gananciaE){
+
         int gananciaT=ganancia*this.Computadores+gananciaE*this.ComputadoresE;
+        vista.updateEarnings(gananciaT);
         this.Computadores=0;
         this.ComputadoresE=0;
         return(gananciaT);
@@ -46,6 +51,7 @@ public class Almacen {
     }
     
     public void crearPC(int cpu,int fuente,int placa,int ram,int tarjeta,int comp){
+        
         try{
             if((this.EspacioCPU>=cpu)&&(this.EspacioFuente>=fuente)&&(this.EspacioPlaca>=placa)&&(this.EspacioRam>=ram)){
             
@@ -73,6 +79,9 @@ public class Almacen {
                     this.EspacioFuente=this.EspacioFuente-fuente;
                     this.Computadores++;
                     this.compcount++;
+                    
+        
+        
 //                    System.out.println("El ensamblador esta saliendo del almacen para una PC");
                     this.semaforo.release();
 //                    System.out.println("El ensamblador ha salido del almacen para una PC");
@@ -92,9 +101,27 @@ public class Almacen {
             return(false);
         }
     }
-    
+    public void setDirector(Director a){
+    this.m=a;
+    }
+    public void setName(String a){
+    this.name=a;
+    }
+    public void setPM(ProyectManager a){
+    this.a=a;
+    }
+
     public void almacenar(int empleadoID,String empleadotipo,int unidades){
         
+        if("MSI".equals(name)){
+           this.vista.updateDaysLeft1(this.m.getDaysLeft());
+               this.vista.updateCosts1(this.a.getDays());
+               this.vista.PM1(a.isViendoAnime());
+        }else{
+        this.vista.updateDaysLeft(this.m.getDaysLeft());
+            this.vista.updateCosts(this.a.getDays());
+        this.vista.PM(a.isViendoAnime());
+        }
         //Saber el deposito
         try {
             //Entrando al almacen
@@ -106,7 +133,12 @@ public class Almacen {
             case "Placa" -> {
                 if (this.EspacioPlaca<25) {
                     this.EspacioPlaca=this.EspacioPlaca+unidades;
-                   this.vista.updatePlacaBase(this.EspacioPlaca, 25);
+                      if("MSI".equals(name)){
+                           this.vista.updatePlacaBase1(this.EspacioPlaca, 25);
+                           }else{
+                          this.vista.updatePlacaBase(this.EspacioPlaca, 25);
+                           }
+                   
                 } else {
 //                    System.out.println("No hay mas espacio para placas!!");
                 }
@@ -114,7 +146,12 @@ public class Almacen {
             case "CPU" -> {
                 if (this.EspacioCPU<20) {
                     this.EspacioCPU=this.EspacioCPU+unidades;
-                    this.vista.updateCPUs(this.EspacioCPU, 20);
+                    if("MSI".equals(name)){
+                          this.vista.updateCPUs1(this.EspacioCPU, 20);
+                           }else{
+                             this.vista.updateCPUs(this.EspacioCPU, 20);
+                           }
+ 
                     System.out.println("CPUs en el almacen: " + this.EspacioCPU);
                 } else {
 //                    System.out.println("No hay mas espacio para CPUs!!");
@@ -123,7 +160,12 @@ public class Almacen {
             case "Ram" -> {
                 if (this.EspacioRam<55) {
                     this.EspacioRam=this.EspacioRam+unidades;
-                    this.vista.updateRAM(this.EspacioRam, 55);
+                    if("MSI".equals(name)){
+                             this.vista.updateRAM1(this.EspacioRam, 55);
+                           }else{
+                         this.vista.updateRAM(this.EspacioRam, 55);
+                           }
+                   
 //                    System.out.println("Rams en el almacen: " + this.EspacioCPU);
                 } else {
 //                    System.out.println("No hay mas espacio para Rams!!");
@@ -132,7 +174,12 @@ public class Almacen {
             case "Fuente" -> {
                 if (this.EspacioFuente<35) {
                     this.EspacioFuente=this.EspacioFuente+unidades;
-                    this.vista.updateFuenteAlimentacion(this.EspacioFuente, 35);
+                    if("MSI".equals(name)){
+                              this.vista.updateFuenteAlimentacion1(this.EspacioFuente, 35);
+                           }else{
+                             this.vista.updateFuenteAlimentacion(this.EspacioFuente, 35);
+                           }
+                  
 //                    System.out.println("Fuentes en el almacen: " + this.EspacioFuente);
                 } else {
 //                    System.out.println("No hay mas espacio para Fuentes de poder!!");
@@ -141,7 +188,12 @@ public class Almacen {
             case "Tarjeta" -> {
                 if (this.EspacioTarjeta<35) {
                     this.EspacioTarjeta=this.EspacioTarjeta+unidades;
-                    this.vista.updateTarjetas(this.EspacioTarjeta, 35);
+                    if("MSI".equals(name)){
+                          this.vista.updateTarjetas1(this.EspacioTarjeta, 35);
+                           }else{
+                          this.vista.updateTarjetas(this.EspacioTarjeta, 35);
+                           }
+                    
 //                    System.out.println("Tarjetas en el almacen: " + this.EspacioTarjeta);
                 } else {
 //                    System.out.println("No hay mas espacio para Tarjetas Graficas!!");

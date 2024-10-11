@@ -12,15 +12,26 @@ import Class.Almacen;
  * @author gabga
  */
 public class ProductorTarjetaG extends Empleados{
-    
-    public ProductorTarjetaG(int id,Almacen almacen,int Unidades) {
+        int days;
+    public ProductorTarjetaG(int id,Almacen almacen,int CI) {
         super(26, id,"Tarjeta",almacen);
+        
+            if (CI >= 0 && CI < 5) {
+                // Intervalo 0 <= X < 5
+                this.days = 3; // 1 tarjeta gráfica cada 3 días
+                this.unidades=1;
+            } else if (CI >= 5 && CI <= 9) {
+                // Intervalo 5 <= X <= 9
+                this.days = 2; // 1 tarjeta gráfica cada 2 días
+                this.unidades=1;
+            }
+
     }
     
     public void run(){
         while(true){
             this.isAlive(); //Literalmente el archivo del coco de TFT2
-           if(this.diaspro>2){
+           if(this.diaspro>=days){
                 this.Almacen.almacenar(this.ID, this.tipo, this.unidades);
                 this.reiniciardias();
             }

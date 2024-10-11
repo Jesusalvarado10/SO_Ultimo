@@ -27,7 +27,8 @@ public class Main {
         int PR;
         int PC;
         int PT;
-        
+        Empresa hp;
+        Empresa msi;
     public Main(int CI) {
         this.PP=CI;
         this.PF=CI;
@@ -35,7 +36,7 @@ public class Main {
         this.PC=CI;
         this.PT=CI;
     }
-public void setHP( prueba m, int cpu, int fuente, int placa, int ram, int tarjeta){
+public void setHP( prueba m, int cpu, int fuente, int placa, int ram, int tarjeta,int max){
          this.CCPUHP=cpu;
          this.CFuenteHP=fuente;
          this.CPlacaHP=placa;
@@ -47,7 +48,7 @@ public void setHP( prueba m, int cpu, int fuente, int placa, int ram, int tarjet
         System.out.println("Placa"+CPlacaHP);
         System.out.println("Tarjetas"+CTarjetaHP);
         
-        ProyectManager PM= new ProyectManager();
+        ProyectManager PM= new ProyectManager(max);
         Director director=new Director(PM);
         Almacen almacen= new Almacen(m);
         //Nuevo array
@@ -74,15 +75,16 @@ public void setHP( prueba m, int cpu, int fuente, int placa, int ram, int tarjet
         }
         //Creacion de la empresa
         Empresa HP= new Empresa("HP",PM,director,PPlaca,PFuente,PCPU,PTarjeta,PRam,ensamblador,almacen);
+        this.hp=HP;
         HP.SolicitarPM().start();
 }    
-     public void setHMSI( prueba m, int cpu, int fuente, int placa, int ram, int tarjeta){
+     public void setHMSI( prueba m, int cpu, int fuente, int placa, int ram, int tarjeta,int max){
          this.CCPUMSI=cpu;
          this.CFuenteMSI=fuente;
          this.CPlacaMSI=placa;
          this.CRamMSI=ram;
          this.CTarjetaMSI=tarjeta;
-        ProyectManager PM= new ProyectManager();
+        ProyectManager PM= new ProyectManager(max);
         Director director=new Director(PM);
         Almacen almacen= new Almacen(m);
         ProductorFuente PFuente[]= new ProductorFuente[CFuenteMSI];
@@ -108,6 +110,26 @@ public void setHP( prueba m, int cpu, int fuente, int placa, int ram, int tarjet
         }
         //Creacion de la empresa
         Empresa MSI= new Empresa("MSI",PM,director,PPlaca,PFuente,PCPU,PTarjeta,PRam,ensamblador,almacen);
+        this.msi=MSI;
         MSI.SolicitarPM().start();
 }    
+
+    public void setaddHP(String tipoFinal) {
+        this.hp.cambiarpuesto("a", tipoFinal);
+    }
+    
+    public void setdeleteHP(String tipoInicial) {
+            this.hp.cambiarpuesto(tipoInicial, null);
+    }
+    
+   public void setaddMSI(String tipoFinal) {
+        this.msi.cambiarpuesto("a", tipoFinal);
+    }
+    
+    public void setdeleteMSI(String tipoInicial) {
+            this.msi.cambiarpuesto(tipoInicial, null);
+    }
+    
+    
+     
 }
