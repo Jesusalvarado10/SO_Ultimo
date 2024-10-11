@@ -81,9 +81,65 @@ public class Empresa {
     }
     
     public void cambiarpuesto(String tipoInicial, String tipoFinal){
-        switch(tipoFinal){
+        Object Ultimo;
+        int position=0;
+        int unidades=0;
+        switch(tipoInicial){
             case("CPU"): 
-                    for (int i;)
+                for (int i = 0;i<=this.PCPU.length;i++){
+                    Ultimo=this.PCPU[i];
+                    if(Ultimo==null){
+                        position=i-1;
+                        unidades=this.PCPU[position].getunidades();
+                        break;
+                    }
+                }
+            case("Ram"): 
+                for (int i = 0;i<=this.PRam.length;i++){
+                    Ultimo=this.PRam[i];
+                    if(Ultimo==null){
+                        position=i-1;
+                        unidades=this.PRam[position].getunidades();
+                        break;
+                    }
+                }
+            case("Tarjeta"): 
+                for (int i = 0;i<=this.PTarjeta.length;i++){
+                    Ultimo=this.PTarjeta[i];
+                    if(Ultimo==null){
+                        position=i-1;
+                        unidades=this.PTarjeta[position].getunidades();
+                        break;
+                    }
+                }
+            case("Placa"): 
+                for (int i = 0;i<=this.PPlacas.length;i++){
+                    Ultimo=this.PPlacas[i];
+                    if(Ultimo==null){
+                        position=i-1;
+                        unidades=this.PPlacas[position].getunidades();
+                        break;
+                    }
+                }
+            case("Ensamblador"): 
+                System.out.println("No se puede cambiar al ensamblador");
+        }
+        switch(tipoFinal){
+            case ("CPU"):
+                this.PCPU[position]= new ProductorCPU(position,this.Almacen,unidades);
+            case ("Tarjeta"):
+                this.PTarjeta[position]= new ProductorTarjetaG(position,this.Almacen,unidades);
+            case ("Ram"):
+                this.PRam[position]= new ProductorRam(position,this.Almacen,unidades);
+            case ("Placa"):
+                this.PPlacas[position]= new ProductorPlaca(position,this.Almacen,unidades);
+            case ("Fuente"):
+                this.PFuente[position]= new ProductorFuente(position,this.Almacen,unidades);
+            case ("Ensamblador"):
+                System.out.println("Mi hermano, esta parte del proyecto se escondió en el docs, así que la estrucutra");
+                System.out.println("no está hecha para realizar estos cambios y aún así hicimos un amago para hacerlo");
+                System.out.println("sin alterar la estructura, haciendo un par de arreglos. Cambiar el ensamblador, implica ");
+                System.out.println("cambiar la arquitectura un pelo, cosa que nanai.");
         }
     }
     public void setGanancias(int Ganancias) {

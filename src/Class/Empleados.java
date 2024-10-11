@@ -47,7 +47,9 @@ public class Empleados extends Thread{
         System.out.println("Contratado empleado "+this.ID+" tipo "+this.tipo);
         this.PunteroAEmpresa=empresa;
     }
-    
+    public int getunidades(){
+        return(this.unidades);
+    }
     public int getID(){
     return(this.ID);}
     
