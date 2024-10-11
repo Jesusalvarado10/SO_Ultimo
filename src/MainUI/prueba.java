@@ -68,20 +68,21 @@ public class prueba extends javax.swing.JFrame {
             }
         }
         this.m= new Main( lastNumber);
-         SpinnerNumberModel modeloSpinner1 = new SpinnerNumberModel(12 + lastNumber, 12 + lastNumber, 12 + 9, 1);
-         SpinnerNumberModel modeloSpinner2 = new SpinnerNumberModel(12 + lastNumber, 12 + lastNumber, 12 + 9, 1);
-        SpinnerNumberModel modeloSpinner3  = new SpinnerNumberModel(12 + lastNumber, 12 + lastNumber, 12 + 9, 1);
-        SpinnerNumberModel modeloSpinner4 = new SpinnerNumberModel(12 + lastNumber, 12 + lastNumber, 12 + 9, 1);
-        SpinnerNumberModel modeloSpinner5  = new SpinnerNumberModel(12 + lastNumber, 12 + lastNumber, 12 + 9, 1);
-        SpinnerNumberModel modeloSpinner6  = new SpinnerNumberModel(12 + lastNumber, 12 + lastNumber, 12 + 9, 1);
-        SpinnerNumberModel modeloSpinner7 = new SpinnerNumberModel(12 + lastNumber, 12 + lastNumber, 12 + 9, 1);
-        SpinnerNumberModel modeloSpinner8  = new SpinnerNumberModel(12 + lastNumber, 12 + lastNumber, 12 + 9, 1);
-        SpinnerNumberModel modeloSpinner9 = new SpinnerNumberModel(12 + lastNumber, 12 + lastNumber, 12 + 9, 1);
-        SpinnerNumberModel modeloSpinner10 = new SpinnerNumberModel(12 + lastNumber, 12 + lastNumber, 12 + 9, 1);
+         
+         SpinnerNumberModel modeloSpinner1 = new SpinnerNumberModel(1, 1, 12 + lastNumber, 1);
+        SpinnerNumberModel modeloSpinner2 = new SpinnerNumberModel(1, 1, 12 + lastNumber, 1);
+        SpinnerNumberModel modeloSpinner3 = new SpinnerNumberModel(1, 1, 12 + lastNumber, 1);
+        SpinnerNumberModel modeloSpinner4 = new SpinnerNumberModel(1, 1, 12 + lastNumber, 1);
+        SpinnerNumberModel modeloSpinner5 = new SpinnerNumberModel(1, 1, 12 + lastNumber, 1);
+        SpinnerNumberModel modeloSpinner6 = new SpinnerNumberModel(1, 1, 12 + lastNumber, 1);
+        SpinnerNumberModel modeloSpinner7 = new SpinnerNumberModel(1, 1, 12 + lastNumber, 1);
+        SpinnerNumberModel modeloSpinner8 = new SpinnerNumberModel(1, 1, 12 + lastNumber, 1);
+        SpinnerNumberModel modeloSpinner9 = new SpinnerNumberModel(1, 1, 12 + lastNumber, 1);
+        SpinnerNumberModel modeloSpinner10 = new SpinnerNumberModel(1, 1, 12 + lastNumber, 1);
         SpinnerNumberModel modeloSpinner11 = new SpinnerNumberModel(1, 1, 100, 1);
         SpinnerNumberModel modeloSpinner12 = new SpinnerNumberModel(1, 1, 100, 1);
-        SpinnerNumberModel modeloSpinner13  = new SpinnerNumberModel(12 + lastNumber, 12 + lastNumber, 12 + 9, 1);
-        SpinnerNumberModel modeloSpinner14 = new SpinnerNumberModel(12 + lastNumber, 12 + lastNumber, 12 + 9, 1);
+        SpinnerNumberModel modeloSpinner13 = new SpinnerNumberModel(1, 1, 12 + lastNumber, 1);
+        SpinnerNumberModel modeloSpinner14 = new SpinnerNumberModel(1, 1, 12 + lastNumber, 1);
         InputMSI1 = new JSpinner(modeloSpinner1);
         InputMSI2 = new JSpinner(modeloSpinner2);
         InputMSI3 = new JSpinner(modeloSpinner3);
