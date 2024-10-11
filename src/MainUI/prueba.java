@@ -16,6 +16,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTabbedPane;
@@ -42,7 +43,30 @@ public class prueba extends javax.swing.JFrame {
         setTitle("Computadoras");
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        int lastNumber=5;
+
+        
+         int lastNumber;
+        while (true) {
+            try {
+                String input = JOptionPane.showInputDialog("Ingresa la cédula:");
+                int userInput = Integer.parseInt(input);
+                // Check if the input is negative
+                if (userInput >= 0) {
+                    // Get the last digit of the cédula
+                     lastNumber = Character.getNumericValue(input.charAt(input.length() - 1));
+                    break;
+                }
+                // Optionally, you can break the loop or continue to ask for more input
+                // break; // Uncomment this if you want to exit after the first valid input
+                
+            } catch (NumberFormatException e) {
+                // Handle the case where the input is not a valid integer
+                JOptionPane.showMessageDialog(null, "Error: Debes ingresar un número válido.");
+            } catch (Exception e) {
+                // Handle any other unexpected exceptions
+                JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+            }
+        }
         this.m= new Main( lastNumber);
          SpinnerNumberModel modeloSpinner1 = new SpinnerNumberModel(12 + lastNumber, 12 + lastNumber, 12 + 9, 1);
          SpinnerNumberModel modeloSpinner2 = new SpinnerNumberModel(12 + lastNumber, 12 + lastNumber, 12 + 9, 1);
@@ -273,6 +297,7 @@ public JPanel createConfigPanel() {
         System.out.println(this.InputHP3.getValue());
         System.out.println(this.InputHP4.getValue());
         System.out.println(this.InputHP5.getValue());
+        System.out.println(this.InputDay.getValue());
         
  
       
@@ -444,7 +469,7 @@ public JPanel createConfigPanel() {
                     (int) InputHP1.getValue(),
                     (int) InputHP2.getValue(),
                     (int) InputHP6.getValue(),
-                    (int)InputDaysDelivery.getValue()
+                    (int)InputDay.getValue()
                 );
                 click=true;
 
@@ -768,7 +793,7 @@ JLabel status22;
                     (int) InputMSI1.getValue(),
                     (int) InputMSI2.getValue(),
                     (int) InputMSI6.getValue(),
-                      (int)InputDaysDelivery.getValue()
+                      (int)InputDay.getValue()
                 );
 
                 // Desactivar el MouseListener después del primer clic

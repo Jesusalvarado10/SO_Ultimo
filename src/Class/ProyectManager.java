@@ -72,7 +72,7 @@ public class ProyectManager extends Thread{
                 }
         this.Empresa.getEnsamblador().start();
         this.Empresa.SolicitarDirector().start();
-        while (this.Days>=this.max){
+        while (this.Days<=this.max){
             this.Empresa.SolicitarDirector().CountDays();
             try{
                 //Primera hora del día
@@ -142,4 +142,5 @@ public class ProyectManager extends Thread{
     }
  JOptionPane.showMessageDialog(null, "Termino", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
 }
+    
 }
