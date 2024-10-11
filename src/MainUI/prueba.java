@@ -39,7 +39,7 @@ public class prueba extends javax.swing.JFrame {
     private JPanel configPanel, HPPanel, MSIPanel, statisticsPanel;
     Main m;
     public prueba() {
-        setTitle("Animation Studio");
+        setTitle("Computadoras");
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         int lastNumber=5;
