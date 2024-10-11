@@ -24,6 +24,11 @@ public class Director extends Thread{
     public void run(){
         while (true){
             this.isAlive();
+            if(this.DaysLeft==1){
+                if(this.PM.isViendoAnime()){
+                    //consecuencias
+                }
+            }
             if(this.DaysLeft<=0){
                 System.out.println("El Director dice: Voy a vender ");
                 this.punteroEmpresa.setGanancias(this.punteroEmpresa.accesoAlmacen().EnviarPC(this.punteroEmpresa.getGanancia(), this.punteroEmpresa.getGananciaE()));

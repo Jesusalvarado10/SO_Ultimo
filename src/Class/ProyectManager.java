@@ -16,9 +16,15 @@ import java.util.ListIterator;
 public class ProyectManager extends Thread{
     private int Days;
     private Empresa Empresa;
+    private boolean ViendoAnime;
     public ProyectManager(){
         this.Days=0;
         this.Empresa=null;
+        this.ViendoAnime=false;
+    }
+
+    public boolean isViendoAnime() {
+        return ViendoAnime;
     }
     
     public int getDays(){
@@ -51,27 +57,46 @@ public class ProyectManager extends Thread{
         while (true){
             this.Empresa.SolicitarDirector().CountDays();
             try{
+                //Primera hora del día
+                
                 System.out.println("Produccion para el dia: "+this.Days);
                 for (int i = 1; i<=this.Empresa.SolicitarPPlacas().length-1;i++){
                     this.Empresa.SolicitarPPlacas()[i].sumardias();
                 }
-                
+                this.ViendoAnime=true;
+                Thread.sleep(170);
+                this.ViendoAnime=false;
                 for (int i = 0; i<=Empresa.SolicitarPPlacas().length-1;i++){
                     this.Empresa.SolicitarPPlacas()[i].sumardias();
                 }
+                this.ViendoAnime=true;
+                Thread.sleep(170);
+                this.ViendoAnime=false;
                 for (int i = 0; i<=Empresa.SolicitarPCPU().length-1;i++){
                             this.Empresa.SolicitarPCPU()[i].sumardias();
                         }
+                this.ViendoAnime=true;
+                Thread.sleep(170);
+                this.ViendoAnime=false;
                 for (int i = 0; i<=Empresa.SolicitarPFuente().length-1;i++){
                             this.Empresa.SolicitarPFuente()[i].sumardias();
                         }
+                this.ViendoAnime=true;
+                Thread.sleep(170);
+                this.ViendoAnime=false;
                 for (int i = 0; i<=Empresa.SolicitarPRam().length-1;i++){
                             this.Empresa.SolicitarPRam()[i].sumardias();
                         }
+                this.ViendoAnime=true;
+                Thread.sleep(170);
+                this.ViendoAnime=false;
                 for (int i = 0; i<=Empresa.SolicitarPTarjeta().length-1;i++){
                             this.Empresa.SolicitarPTarjeta()[i].sumardias();
                         }
-                Thread.sleep(2000);
+                this.ViendoAnime=true;
+                Thread.sleep(170);
+                this.ViendoAnime=false;
+                Thread.sleep(978);
                 
                 this.Days++;
             } catch(InterruptedException e){
