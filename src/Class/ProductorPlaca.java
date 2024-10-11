@@ -4,7 +4,7 @@
  */
 package Class;
 
-import Class.Empresa;
+import Class.Empleados;
 import Class.Almacen;
 
 /**
@@ -12,32 +12,40 @@ import Class.Almacen;
  * @author gabga
  */
 public class ProductorPlaca extends Empleados{
-    int ultimoNumeroCarnet;
-     int capacidad= 25;
-
-  public ProductorPlaca(int ultimoNumeroCarnet, int paga, int id, String tipo, Almacen almacen, int Unidades) {
-        super(paga, id, tipo, almacen, Unidades);
-        this.ultimoNumeroCarnet = ultimoNumeroCarnet;
-    }
-
-   
-    
-      public int produccionDiaria() {
-        if (ultimoNumeroCarnet >= 0 && ultimoNumeroCarnet < 3) {
-            return 1 / 2;  // 1 placa base cada 2 días
-        } else if (ultimoNumeroCarnet >= 3 && ultimoNumeroCarnet < 6) {
-            return 1 / 3;  // 1 placa base cada 3 días
-        } else {
-            return 1 / 4;  // 1 placa base cada 4 días
+    int days;
+    public ProductorPlaca(int id,Almacen almacen,int CI) {
+        super(26, id,"Placa",almacen);
+     if (CI >= 0 && CI < 3) {
+            days = 2; // 1 placa base cada 2 días
+            this.unidades=1;
+        } else if (CI >= 3 && CI < 6) {
+            days = 3; // 1 placa base cada 3 días
+            System.out.print("entro5");System.out.print("entro5");
+            this.unidades=1;
+        } else{
+            days = 4; // 1 placa base cada 4 días
+        this.unidades=1;
         }
     }
+    
     public void run(){
-        chambear();
+        while(true){
+            this.isAlive(); //Literalmente el archivo del coco de TFT2
+           if(this.diaspro>=days){
+                this.Almacen.almacenar(this.ID, this.tipo, this.unidades);
+                this.reiniciardias();
+            }
+        }
+    }
+    
+    public void refreshday(){
+        this.ProduDay=this.PunteroAEmpresa.SolicitarPM().getDays();
     }
     
     public void chambear(){
         //int Days=this.PunteroAEmpresa.SolicitarPM().getDays();
-        if (this.ProduDay==2){
+        if (this.ProduDay>2){  
+            //System.out.println("Soy el empleado" + this.ID +" y me voy por el dia "+this.ProduDay);
         this.ProduDay=0;
         this.Almacen.almacenar(this.ID,this.tipo,this.unidades);
         }

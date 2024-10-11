@@ -5,34 +5,32 @@
 package Class;
 
 import Class.Empleados;
+import Class.Almacen;
 
 /**
  *
  * @author gabga
  */
 public class ProductorFuente extends Empleados {
-
-     int ultimoNumeroCarnet;
-     int capacidad;
-
-    public ProductorFuente(int ultimoNumeroCarnet, int paga, int id, String tipo, Almacen almacen, int Unidades) {
-        super(paga, id, tipo, almacen, Unidades);
-        this.ultimoNumeroCarnet = ultimoNumeroCarnet;
-        this.capacidad=35;
-    }
     
-       public int produccionDiaria() {
-        if (ultimoNumeroCarnet >= 0 && ultimoNumeroCarnet < 3) {
-            return 1 / 2;  // 1 CPU cada 2 días
-        } else if (ultimoNumeroCarnet >= 3 && ultimoNumeroCarnet < 6) {
-            return 1 / 3;  // 1 CPU cada 3 días
-        } else {
-            return 1 / 4;  // 1 CPU cada 4 días
+    public ProductorFuente(int id,Almacen almacen,int CI) {
+        super(26, id,"Fuente",almacen);
+
+        if (CI >= 0 && CI < 5) {
+            this.unidades = 3; // 3 Fuentes de alimentación cada día
+        } else  {
+            System.out.print("entro5");
+            this.unidades = 5; // 5 Fuentes de alimentación cada día
+    }
+    }    
+        public void run(){
+        while(true){
+            this.isAlive(); //Literalmente el archivo del coco de TFT2
+           if(this.diaspro>=1){
+                this.Almacen.almacenar(this.ID, this.tipo, this.unidades);
+                this.reiniciardias();
+            }
         }
-       }
-    public void run(){
-        this.chambear();
-        this.refreshday();
     }
     
     public void refreshday(){
@@ -41,7 +39,7 @@ public class ProductorFuente extends Empleados {
     
     public void chambear(){
         //int Days=this.PunteroAEmpresa.SolicitarPM().getDays();
-        if (this.ProduDay==2){  
+        if (this.ProduDay>2){  
             //System.out.println("Soy el empleado" + this.ID +" y me voy por el dia "+this.ProduDay);
         this.ProduDay=0;
         this.Almacen.almacenar(this.ID,this.tipo,this.unidades);
@@ -50,5 +48,5 @@ public class ProductorFuente extends Empleados {
             this.ProduDay++;
         }
     }
-
+    
 }

@@ -4,20 +4,36 @@
  */
 package Class;
 
+import Class.Empleados;
+import Class.Almacen;
+
 /**
  *
  * @author gabga
  */
 public class ProductorCPU extends Empleados{
     
-    public ProductorCPU(int id,Almacen almacen,int Unidades) {
-        super(26, id,"CPU",almacen,Unidades);
+    int days;
+    public ProductorCPU(int id,Almacen almacen,int CI) {
+        super(26, id,"CPU",almacen);
+          if (CI >= 0 && CI < 3) {
+            days = 2; // 1 CPU cada 2 días
+            this.unidades=1;
+        } else if (CI >= 3 && CI < 6) {
+            System.out.print("entro5");
+            days = 3; // 1 CPU cada 3 días
+            this.unidades=1;
+        } else{
+            days = 4; // 1 CPU cada 4 días
+        this.unidades=1;
+        }
+          
     }
     
-    public void run(){
+     public void run(){
         while(true){
             this.isAlive(); //Literalmente el archivo del coco de TFT2
-           if(this.diaspro>2){
+           if(this.diaspro>=days){
                 this.Almacen.almacenar(this.ID, this.tipo, this.unidades);
                 this.reiniciardias();
             }
@@ -31,7 +47,7 @@ public class ProductorCPU extends Empleados{
     public void chambear(){
         //int Days=this.PunteroAEmpresa.SolicitarPM().getDays();
         if (this.ProduDay>2){  
-//            System.out.println("Soy el empleado" + this.ID +" y voy por el dia "+this.ProduDay);
+            System.out.println("Soy el empleado" + this.ID +" y me voy por el dia "+this.ProduDay);
         this.ProduDay=0;
         this.Almacen.almacenar(this.ID,this.tipo,this.unidades);
         }

@@ -4,6 +4,10 @@
  */
 package Class;
 
+
+import Class.Almacen;
+import Class.Empresa;
+
 /**
  *
  * @author gabga

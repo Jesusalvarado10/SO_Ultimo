@@ -20,18 +20,31 @@ public class Empleados extends Thread{
     protected Empresa PunteroAEmpresa;
     protected int ProduDay;
     protected int unidades;
+    protected int diaspro;
     
-    public Empleados(int paga,int id,String tipo,Almacen almacen,int Unidades){
+    public Empleados(int paga,int id,String tipo,Almacen almacen){
         this.PagaPorHora=paga;
         this.ID=id;
         this.tipo=tipo;
         this.Almacen=almacen;
         this.PunteroAEmpresa=null;
-        this.unidades=Unidades;
+        this.unidades=0;
+        this.diaspro=0;
+    }
+    
+    public void sumardias(){
+//        System.out.println("Se ha sumado en hilo "+this.ID);
+        this.diaspro++;
+        System.out.println("Dias produccion: " +this.diaspro);
+    }
+    
+    public void reiniciardias(){
+        this.diaspro=0;
+//        System.out.println("Dias produccion: " +this.diaspro);
     }
     
     public void Contratar(Empresa empresa){
-        System.out.println("Contratado "+this.ID);
+        System.out.println("Contratado empleado "+this.ID+" tipo "+this.tipo);
         this.PunteroAEmpresa=empresa;
     }
     
